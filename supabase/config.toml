@@ -1,0 +1,22 @@
+project_id = "xyhdzqhaxvhvjuvdvllj"
+
+[functions.claim-anonymous-judge]
+verify_jwt = true
+
+[functions.get-my-scorecard]
+verify_jwt = true
+
+[functions.save-my-score]
+verify_jwt = true
+
+[functions.admin-login]
+verify_jwt = false
+
+[functions.admin-dashboard]
+verify_jwt = false
+
+[functions.admin-action]
+verify_jwt = false
+
+[functions.public-results]
+verify_jwt = false
