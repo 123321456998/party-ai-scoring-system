@@ -1,6 +1,6 @@
 export const eventConfig = {
-  name: '党建引领AI业务大赛',
-  subtitle: '党建引领 · 数智赋能',
+  name: '党建引领·数智赋能 AI创新竞赛',
+  subtitle: '党建引领·数智赋能',
   fullScore: 10,
   teams: ['A队', 'B队', 'C队', 'D队', 'E队', 'F队'],
 } as const
