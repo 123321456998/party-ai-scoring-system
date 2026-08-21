@@ -29,7 +29,7 @@ npx supabase functions deploy
    - `VITE_EVENT_KEY`
 3. 推送到 `main` 后，`.github/workflows/deploy-pages.yml` 会自动构建和发布。
 4. GitHub Pages 使用哈希路由，页面地址为 `/#/admin`、`/#/score`、`/#/results`。
-5. 后台二维码访问地址必须填写完整公网网址，例如 `https://123321456998.github.io/party-ai-scoring-system/`，二维码会自动生成 `/#/score?code=...`。
+5. 后台统一评分入口二维码固定指向 `https://party-ai-scoring-system.vercel.app`。评委扫码进入首页后，再输入工作人员提供的评分码；二维码不绑定评委身份。
 
 ## 现场验收
 
