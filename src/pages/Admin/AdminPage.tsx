@@ -12,7 +12,7 @@ function AdminLogin({ onLogin }: { onLogin: () => Promise<void> }) {
   return <div className="admin-login page-container"><div className="identity-card"><div className="identity-emblem"><KeyRound size={23} /></div><div className="eyebrow">工作人员入口</div><h1>进入现场控制台</h1><p className="identity-event">请使用管理员口令继续</p><form onSubmit={submit}><label htmlFor="admin-pin">管理员口令</label><input id="admin-pin" value={pin} onChange={(event) => setPin(event.target.value)} placeholder="请输入口令" type="password" inputMode="numeric" /><button className="primary-button" disabled={pin.length < 4}>进入控制台</button>{error && <div className="form-error"><CircleAlert size={15} />{error}</div>}</form>{isDemoMode && <div className="demo-login-hint">DEMO 管理口令：<strong>{demoAdminPin}</strong></div>}</div></div>
 }
 
-const SCORING_ENTRY_URL = 'https://party-ai-scoring-system.vercel.app'
+const SCORING_ENTRY_URL = 'https://party-ai-scoring-system.vercel.app/#/score'
 
 function QrCodeCard() {
   const download = () => {
