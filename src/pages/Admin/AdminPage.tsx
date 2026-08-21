@@ -13,7 +13,7 @@ function AdminLogin({ onLogin }: { onLogin: () => Promise<void> }) {
 }
 
 function QrCodeCard({ code, index, baseUrl }: { code: string; index: number; baseUrl: string }) {
-  const scoreUrl = `${baseUrl.replace(/\/$/, '')}/score?code=${encodeURIComponent(code)}`
+  const scoreUrl = `${baseUrl.replace(/\/$/, '')}/#/score?code=${encodeURIComponent(code)}`
   const download = () => {
     const canvas = document.querySelector<HTMLCanvasElement>(`[data-qr-code="${code}"] canvas`)
     if (!canvas) return

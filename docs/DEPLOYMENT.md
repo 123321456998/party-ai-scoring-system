@@ -1,6 +1,6 @@
 # 正式环境部署说明
 
-本项目默认使用 DEMO 模式。正式环境需要先准备 Supabase，再将前端部署到 Vercel；不要把管理员 PIN 写入任何 `VITE_` 变量。
+本项目默认使用 DEMO 模式。正式环境需要先准备 Supabase，再将前端部署到 GitHub Pages；不要把管理员 PIN 写入任何 `VITE_` 变量。
 
 ## Supabase
 
@@ -20,9 +20,16 @@ npx supabase functions deploy
 
 4. 在 Supabase Edge Function Secrets 中设置 `ADMIN_PIN`。它只用于后台函数鉴权，不放在浏览器环境变量中。
 
-## Vercel
+## GitHub Pages
 
-完成 Supabase 配置并通过本地测试后，再执行 `npx vercel` 完成登录和部署。Vercel 只配置三个浏览器安全变量：`VITE_SUPABASE_URL`、`VITE_SUPABASE_PUBLISHABLE_KEY`、`VITE_EVENT_KEY`。部署后检查 `/admin`、`/score`、`/results` 三条路由。
+1. 在 GitHub 仓库 Settings → Pages 中将 Source 设置为 GitHub Actions。
+2. 在 Settings → Secrets and variables → Actions → Variables 中设置：
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY`
+   - `VITE_EVENT_KEY`
+3. 推送到 `main` 后，`.github/workflows/deploy-pages.yml` 会自动构建和发布。
+4. GitHub Pages 使用哈希路由，页面地址为 `/#/admin`、`/#/score`、`/#/results`。
+5. 后台二维码访问地址必须填写完整公网网址，例如 `https://123321456998.github.io/party-ai-scoring-system/`，二维码会自动生成 `/#/score?code=...`。
 
 ## 现场验收
 
