@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
 import { CheckCircle2, Clipboard, CircleAlert, KeyRound, Lock, Play, RefreshCw, Save, ShieldCheck, Users } from 'lucide-react'
-import timesdfLogo from '../../assets/timesdf-logo.png'
 import { AppShell } from '../../components/layout/AppShell'
 import { SectionHeading } from '../../components/common/SectionHeading'
 import { adminLogin, demoAdminPin, generateAnonymousCodes, getAdminDashboard, isDemoMode, lockAndFinalize, publishResults, resetDemoCompetition, saveEventConfig, startScoring, subscribeToScoringUpdates, type AdminDashboard } from '../../data/scoringRepository'
@@ -50,7 +49,7 @@ export function AdminPage() {
   const confirm = async () => { const action = confirmAction === 'start' ? startScoring : confirmAction === 'lock' ? lockAndFinalize : confirmAction === 'publish' ? publishResults : resetDemoCompetition; const success = confirmAction === 'start' ? '评分已开始。' : confirmAction === 'lock' ? '评分已锁定，最终结果已生成。' : confirmAction === 'publish' ? '最终成绩已公布。' : 'DEMO 比赛已重置。'; setConfirmAction(null); await act(action, success) }
 
   return <AppShell pageLabel="现场评分控制台"><div className="admin-page page-container">
-    <div className="admin-heading"><div className="admin-brand-area"><img className="admin-brand-logo" src={timesdfLogo} alt="TIMESDF" /><div className="admin-brand-copy"><h1><span>党建引领·数智赋能</span><span>AI创新竞赛</span></h1><p>现场评分控制台</p></div></div><div className={`status-pill status-${dashboard.status}`}><span />{isPrepare ? '赛前准备' : isScoring ? '评分进行中' : isLocked ? '评分已锁定' : '最终成绩已公布'}</div></div>
+    <div className="admin-heading"><div className={`status-pill status-${dashboard.status}`}><span />{isPrepare ? '赛前准备' : isScoring ? '评分进行中' : isLocked ? '评分已锁定' : '最终成绩已公布'}</div></div>
     {message && <div className="admin-message"><CircleAlert size={15} />{message}</div>}
     <div className="stat-grid"><div className="stat-card"><Users /><span>匿名评委</span><strong>{dashboard.expectedJudges}</strong><small>已设置评委人数</small></div><div className="stat-card"><CheckCircle2 /><span>全部完成</span><strong>{dashboard.completedJudges} <em>/ {dashboard.expectedJudges}</em></strong><small>已完成全部评分</small></div><div className="stat-card accent"><Clipboard /><span>有效评分</span><strong>{dashboard.totalScores} <em>/ {dashboard.expectedScores || dashboard.expectedJudges * 6}</em></strong><small>当前有效评分总数</small></div></div>
     <div className="admin-grid admin-grid-top">
