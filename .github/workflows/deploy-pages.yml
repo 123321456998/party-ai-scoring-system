@@ -36,7 +36,7 @@ jobs:
           VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
           VITE_EVENT_KEY: ${{ vars.VITE_EVENT_KEY }}
-          VITE_SCORING_ENTRY_URL: ${{ vars.VITE_SCORING_ENTRY_URL }}
+          VITE_SCORING_ENTRY_URL: ${{ vars.VITE_SCORING_ENTRY_URL || 'https://123321456998.github.io/party-ai-scoring-system/#/score' }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
