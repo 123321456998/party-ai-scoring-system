@@ -1,8 +1,7 @@
 import { requireAdmin } from '../_shared/admin.ts'
 import { corsHeaders, optionsResponse } from '../_shared/cors.ts'
 
-const codeChars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
-function randomCode() { const bytes = new Uint32Array(8); crypto.getRandomValues(bytes); return `${Array.from(bytes.slice(0, 4), (value) => codeChars[value % codeChars.length]).join('')}-${Array.from(bytes.slice(4), (value) => codeChars[value % codeChars.length]).join('')}` }
+function randomCode() { const range = 9000; const limit = Math.floor(0x100000000 / range) * range; const bytes = new Uint32Array(1); do crypto.getRandomValues(bytes); while (bytes[0] >= limit); return String(1000 + bytes[0] % range) }
 async function sha256(value: string) { const bytes = new TextEncoder().encode(value); const hash = await crypto.subtle.digest('SHA-256', bytes); return [...new Uint8Array(hash)].map((byte) => byte.toString(16).padStart(2, '0')).join('') }
 
 Deno.serve(async (req) => {
