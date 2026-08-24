@@ -4,7 +4,7 @@ import { corsHeaders, optionsResponse } from '../_shared/cors.ts'
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return optionsResponse()
   try {
-    const { team_id, score } = await req.json(); if (typeof team_id !== 'string' || typeof score !== 'number' || score < 0 || score > 10 || Math.round(score * 10) !== score * 10) throw new Error('评分必须是 0 到 10 之间的一位小数。')
+    const { team_id, score } = await req.json(); if (typeof team_id !== 'string' || typeof score !== 'number' || !Number.isInteger(score) || score < 0 || score > 100) throw new Error('评分必须是 0 到 100 之间的整数。')
     const db = adminClient(); const authUid = await currentAuthUid(req); const { data: event } = await db.from('events').select('id').eq('event_key', 'party-ai-business-ai').eq('status', 'scoring').maybeSingle(); if (!event) throw new Error('赛事不可用。')
     const { data: session } = await db.from('judge_sessions').select('anonymous_judge_id').eq('event_id', event.id).eq('auth_uid', authUid).maybeSingle(); if (!session) throw new Error('匿名身份尚未验证。')
     const { data: team } = await db.from('teams').select('id').eq('id', team_id).eq('event_id', event.id).eq('active', true).maybeSingle(); if (!team) throw new Error('队伍不属于当前赛事。')

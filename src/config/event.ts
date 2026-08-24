@@ -1,13 +1,13 @@
 export const eventConfig = {
   name: '党建引领·数智赋能 AI创新竞赛',
   subtitle: '党建引领·数智赋能',
-  fullScore: 10,
-  teams: ['A队', 'B队', 'C队', 'D队', 'E队', 'F队'],
+  fullScore: 100,
+  teams: ['烟组', '酒组', '香化组', '精品组', '香港组', '物流组'],
 } as const
 
 export const mockScores = [
-  { team: 'C队', score: 9.46 }, { team: 'F队', score: 9.31 }, { team: 'A队', score: 9.27 },
-  { team: 'D队', score: 9.08 }, { team: 'B队', score: 8.91 }, { team: 'E队', score: 8.76 },
+  { team: '香化组', score: 95 }, { team: '物流组', score: 93 }, { team: '烟组', score: 92 },
+  { team: '精品组', score: 91 }, { team: '酒组', score: 89 }, { team: '香港组', score: 88 },
 ]
 
-export const completedScores: Record<string, number> = { A队: 9.2, B队: 8.9 }
+export const completedScores: Record<string, number> = { 烟组: 92, 酒组: 89 }
