@@ -21,6 +21,29 @@
 
 @media (max-width:760px) { .identity-card { width:100%; max-width:430px; }.identity-prompt { line-height:1.5; }.score-page { width:100%; overflow:hidden; }.team-name { min-width:0; overflow-wrap:anywhere; }.score-input-wrap { min-width:0; }.score-input-wrap span { white-space:nowrap; } }
 
+/* Score cards keep the team identity together on narrow screens. */
+.score-card { grid-template-columns:minmax(0, 1fr) auto; column-gap:16px; }
+.team-info { min-width:0; display:flex; flex-direction:column; gap:5px; }
+.team-heading { display:flex; align-items:center; gap:12px; min-width:0; }
+.team-name { min-width:0; overflow-wrap:anywhere; }
+.score-input-wrap { grid-column:auto; grid-row:auto; min-width:0; }
+
+/* The gold admin labels are stable A-F display markers; input values remain team names. */
+.team-settings > label:nth-of-type(1) > b::after { content:"A"; }
+.team-settings > label:nth-of-type(2) > b::after { content:"B"; }
+.team-settings > label:nth-of-type(3) > b::after { content:"C"; }
+.team-settings > label:nth-of-type(4) > b::after { content:"D"; }
+.team-settings > label:nth-of-type(5) > b::after { content:"E"; }
+.team-settings > label:nth-of-type(6) > b::after { content:"F"; }
+
+@media (max-width:760px) {
+  .score-card { min-height:78px; padding:12px 13px; column-gap:12px; }
+  .team-info { gap:6px; }
+  .team-heading { gap:10px; }
+  .team-name { font-size:16px; }
+  .score-input-wrap { justify-content:flex-end; }
+}
+
 .landing-page,.not-found-page { min-height:calc(100vh - 132px); display:flex; align-items:center; justify-content:center; }.landing-card { width:min(100%,620px); padding:52px 42px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); text-align:center; }.landing-card h1 { margin:12px 0 10px; }.landing-card > p { color:var(--text-secondary); font-size:16px; }.landing-actions { display:grid; gap:12px; margin-top:32px; }.landing-actions .primary-button,.landing-actions .secondary-button,.not-found-page .primary-button { width:100%; margin:0; text-decoration:none; }.landing-actions .secondary-button { min-height:44px; }.not-found-page .identity-card { width:min(100%,430px); }.not-found-page .primary-button { margin-top:24px; opacity:1; cursor:pointer; }
 @media (max-width:760px) { .landing-page,.not-found-page { min-height:calc(100vh - 112px); align-items:flex-start; padding-top:48px; }.landing-card { padding:36px 22px; }.landing-card h1 { font-size:25px; } }
 
