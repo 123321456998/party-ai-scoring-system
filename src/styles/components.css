@@ -19,6 +19,7 @@
 .danger-zone { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-top:20px; padding:16px 18px; border:1px solid #E5C6C6; border-radius:var(--radius-md); background:#FFF9F9; }.danger-zone .eyebrow { color:var(--danger); }.danger-zone p { margin-top:5px; color:var(--text-secondary); font-size:11px; }.danger-button { min-height:38px; padding:0 16px; color:#9E3030; background:#FFF; border:1px solid #D9A6A6; border-radius:5px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; }.danger-button:hover { background:#FFF0F0; }
 @media (min-width:761px) { .danger-zone { margin-bottom:28px; } }
 @media (min-width:761px) { .results-header h1 { white-space:nowrap; font-size:clamp(30px, 3.2vw, 40px); } }
+@media (min-width:761px) { .results-page .award-groups { transform:translateY(-36px); } }
 @media (max-width:760px) { .qr-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; }.qr-card { padding:7px 4px; }.qr-card canvas { max-width:120px; }.qr-card code { font-size:9px; } }
 
 @media (max-width:760px) { .identity-card { width:100%; max-width:430px; }.identity-prompt { line-height:1.5; }.score-page { width:100%; overflow:hidden; }.team-name { min-width:0; overflow-wrap:anywhere; }.score-input-wrap { min-width:0; }.score-input-wrap span { white-space:nowrap; } }
