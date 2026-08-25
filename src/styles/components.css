@@ -206,3 +206,18 @@
 .award-group-3 .result-team { font-size:clamp(22px,1.65vw,28px); }
 .award-group-3 .result-score { font-size:clamp(31px,2.35vw,42px); }
 .award-group-3 .result-score small { font-size:13px; }
+
+/* Keep the complete award sequence and footer inside a 16:9 viewport. */
+@media (min-width:761px) {
+  .results-page { height:100vh; min-height:0; padding:clamp(12px,1.7vh,18px) clamp(40px,7vw,140px) clamp(8px,1.2vh,12px); overflow:hidden; }
+  .results-header .eyebrow { line-height:1.1; }
+  .results-header h1 { margin:clamp(4px,.7vh,7px) 0 2px; line-height:1.16; }
+  .results-header p { line-height:1.15; }
+  .results-rule { margin-top:clamp(6px,.8vh,9px); margin-bottom:clamp(8px,1.1vh,12px); }
+  .results-page .award-groups { gap:clamp(4px,.7vh,8px); justify-content:space-between; }
+  .award-heading { margin-bottom:clamp(3px,.55vh,6px); }
+  .award-group-1 .award-card { min-height:clamp(164px,17.5vh,172px); padding-top:25px; padding-bottom:21px; }
+  .award-group-2 .award-card { min-height:clamp(132px,13vh,140px); padding-top:18px; padding-bottom:16px; }
+  .award-group-3 .award-card { min-height:clamp(116px,11.5vh,124px); padding-top:16px; padding-bottom:14px; }
+  .results-footer { margin-top:clamp(8px,1.1vh,12px); line-height:1.1; }
+}
