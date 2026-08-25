@@ -76,148 +76,119 @@
 .admin-page { max-width:1200px; }.admin-heading { align-items:center; justify-content:flex-end; min-height:28px; margin-bottom:28px; }.shared-code-list { width:min(100%,420px); grid-template-columns:1fr; gap:7px; margin:0 auto 18px; }.shared-code-list > div { padding:9px 12px; }.shared-code-list code { font-size:13px; font-weight:700; }.shared-access-actions .secondary-button:disabled { opacity:.45; cursor:not-allowed; }
 @media (max-width:760px) { .admin-heading { align-items:stretch; min-height:0; }.status-pill { margin-left:auto; } }
 
-/* Results screen: official competition backdrop and large-format award layout. */
-.results-page {
-  isolation:isolate;
-  color:#163854;
-  background:#F5EFE5 url('../assets/results-award-backdrop.png') center / cover no-repeat;
-}
-.results-page::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:rgba(255,251,245,.18);
-}
+/* Results screen — a single, reference-led composition. */
+.results-page { isolation:isolate; position:relative; color:#163854; background:#F5EFE5 url('../assets/results-award-backdrop.png') center / cover no-repeat; }
+.results-page::before { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background:rgba(255,251,245,.18); }
 .results-page > * { position:relative; z-index:1; }
-.results-header .eyebrow { color:#A9252B; font-weight:700; letter-spacing:.3em; }
+.results-header { text-align:center; }
+.results-header .eyebrow { justify-content:center; color:#A9252B; font-weight:700; letter-spacing:.3em; }
 .results-header h1 { color:#123957; font-weight:750; letter-spacing:.045em; text-shadow:0 1px 0 rgba(255,255,255,.85); }
-.results-header p { color:#5B7280; font-size:clamp(15px,1.2vw,20px); letter-spacing:.18em; }
-.results-rule { width:112px; height:3px; background:linear-gradient(90deg,transparent,#B58936 20%,#B58936 80%,transparent); margin-bottom:clamp(14px,2vh,22px); }
-.award-groups { width:min(82vw,1580px); max-width:none; }
-.award-heading { gap:24px; margin-bottom:clamp(7px,1vh,12px); }
-.award-heading h2 { color:#204C69; font-size:clamp(24px,2vw,34px); font-weight:750; letter-spacing:.2em; text-shadow:0 1px 0 rgba(255,255,255,.9); }
-.award-group-1 .award-heading h2 { color:#B2282C; font-size:clamp(30px,2.55vw,43px); }
-.award-group-3 .award-heading h2 { color:#486877; font-size:clamp(23px,1.8vw,30px); }
+.results-header p { color:#5B7280; letter-spacing:.18em; }
+.results-rule { width:112px; height:3px; background:linear-gradient(90deg,transparent,#B58936 20%,#B58936 80%,transparent); }
+.award-groups { display:flex; flex-direction:column; align-items:center; }
+.award-group { width:100%; }
+.award-heading { display:flex; align-items:center; justify-content:center; }
+.award-heading h2 { color:#204C69; font-weight:750; letter-spacing:.2em; white-space:nowrap; text-shadow:0 1px 0 rgba(255,255,255,.9); }
+.award-group-1 .award-heading h2 { color:#B2282C; }
+.award-group-3 .award-heading h2 { color:#486877; }
 .award-heading h2::before,.award-heading h2::after { content:"◆"; color:#C49A45; display:inline-block; font-size:.34em; margin:0 14px; vertical-align:middle; }
-.award-line { width:clamp(82px,8vw,150px); height:1px; background:linear-gradient(90deg,transparent,#C49A45); }
+.award-line { height:1px; background:linear-gradient(90deg,transparent,#C49A45); }
 .award-heading .award-line:last-child { background:linear-gradient(90deg,#C49A45,transparent); }
-.award-cards { gap:clamp(18px,1.5vw,30px); }
-.award-group-1 .award-cards { grid-template-columns:minmax(540px,700px); }
-.award-group-2 .award-cards { grid-template-columns:repeat(2,minmax(430px,1fr)); }
-.award-group-3 .award-cards { grid-template-columns:repeat(3,minmax(300px,1fr)); }
-.award-card { min-height:clamp(138px,15.5vh,178px); padding:22px 28px 18px; border:1px solid rgba(171,143,78,.52); border-top:6px solid #B78D42; border-radius:5px; background:rgba(255,253,247,.87); box-shadow:0 7px 18px rgba(27,51,64,.07); backdrop-filter:blur(1.5px); }
+.award-cards { display:grid; justify-content:center; min-width:0; }
+.award-card { position:relative; display:grid; grid-template-columns:minmax(0,45%) minmax(0,55%); grid-template-rows:minmax(0,1fr) auto; align-items:center; min-width:0; overflow:hidden; border:1px solid rgba(171,143,78,.52); border-top:5px solid #B78D42; border-radius:5px; background:rgba(255,253,247,.88); box-shadow:0 7px 18px rgba(27,51,64,.07); backdrop-filter:blur(1.5px); }
 .award-card::before { content:""; position:absolute; inset:6px; z-index:0; border:1px solid rgba(185,151,82,.17); pointer-events:none; }
 .award-card > * { position:relative; z-index:1; }
-.award-group-1 .award-card { min-height:clamp(190px,22vh,250px); padding:28px 38px 24px; border-color:rgba(183,143,58,.7); border-top:8px solid #B3292D; background:rgba(255,252,246,.91); box-shadow:0 11px 25px rgba(125,38,35,.1); }
+.award-group-1 .award-card { border-color:rgba(183,143,58,.7); border-top:7px solid #B3292D; background:rgba(255,252,246,.91); box-shadow:0 11px 25px rgba(125,38,35,.1); }
 .award-group-2 .award-card { border-top-color:#B68B3F; }
-.award-group-3 .award-card { min-height:clamp(126px,14vh,160px); border-color:rgba(100,132,147,.4); border-top-color:#7894A3; background:rgba(252,253,249,.84); }
-.award-card .rank-symbol svg { width:34px; height:34px; stroke-width:1.8; }
-.award-group-1 .award-card .rank-symbol svg { width:46px; height:46px; }
-.award-card .rank-number { color:#B2883A; font-size:18px; letter-spacing:.12em; }
-.award-group-1 .award-card .rank-number { font-size:22px; }
-.award-card .result-team { color:#153A57; font-size:clamp(25px,2vw,33px); white-space:nowrap; }
-.award-group-1 .award-card .result-team { font-size:clamp(34px,2.8vw,46px); }
-.award-card .result-score { color:#153A57; font-size:clamp(36px,3.1vw,50px); text-shadow:0 1px 0 #FFF; }
-.award-group-1 .award-card .result-score { font-size:clamp(58px,4.8vw,78px); }
-.award-card .result-score small { font-size:15px; }
-.award-group-1 .award-card .result-score small { font-size:19px; }
-.award-card .rank-label { color:#65757C; font-size:13px; letter-spacing:.12em; }
-.award-group-1 .award-card .rank-label { color:#A42B2D; font-size:16px; font-weight:700; }
+.award-group-3 .award-card { border-color:rgba(100,132,147,.4); border-top-color:#7894A3; background:rgba(252,253,249,.84); }
+.award-identity { grid-column:1; grid-row:1 / span 2; display:flex; align-items:center; min-width:0; }
+.award-identity .rank-symbol { display:grid; flex:0 0 auto; place-items:center; margin:0; color:#B2883A; }
+.award-group-1 .rank-symbol { color:#B3292D; }
+.award-group-3 .rank-symbol { color:#809AA6; }
+.rank-symbol svg { stroke-width:1.8; }
+.identity-copy { display:flex; flex-direction:column; justify-content:center; min-width:0; }
+.rank-number { margin:0; color:#B2883A; font:600 18px Georgia,serif; letter-spacing:.12em; line-height:1; }
+.result-team { min-width:0; color:#153A57; font-weight:700; white-space:nowrap; }
+.result-score { grid-column:2; grid-row:1; justify-self:end; align-self:center; min-width:0; margin:0; color:#153A57; font:700 48px Georgia,serif; white-space:nowrap; text-shadow:0 1px 0 #FFF; }
+.result-score small { margin-left:4px; font:normal 15px var(--font-sans); white-space:nowrap; }
+.rank-label { grid-column:2; grid-row:2; justify-self:end; align-self:end; margin:0; color:#65757C; font-size:12px; letter-spacing:.12em; white-space:nowrap; }
 .tie-label { color:#A57A23; font-weight:700; }
-.results-footer { color:#687B84; font-size:12px; letter-spacing:.16em; text-shadow:0 1px 0 rgba(255,255,255,.9); }
+.results-footer { text-align:center; color:#687B84; font-size:12px; letter-spacing:.16em; text-shadow:0 1px 0 rgba(255,255,255,.9); }
 
 @media (min-width:761px) {
-  .results-page { padding:clamp(18px,2.3vh,28px) clamp(40px,7vw,140px) clamp(12px,1.8vh,20px); }
-  .results-header h1 { margin:clamp(7px,1vh,11px) 0 5px; font-size:clamp(39px,3.5vw,58px); }
-  .results-rule { margin-top:clamp(9px,1.2vh,14px); }
-  .results-page .award-groups { transform:none; gap:clamp(8px,1.1vh,15px); justify-content:space-between; }
-  .award-group { flex:0 0 auto; }
-  .results-footer { margin-top:clamp(7px,1vh,12px); }
+  .results-page { display:grid; grid-template-rows:auto minmax(0,1fr) auto; height:100vh; min-height:0; padding:20px 40px 40px; overflow:hidden; }
+  .results-header h1 { margin:8px 0 4px; font-size:58px; line-height:1.14; }
+  .results-header p { font-size:20px; line-height:1.15; }
+  .results-rule { margin:10px auto 0; }
+  .results-page .award-groups { grid-row:2; align-self:start; width:100%; margin:158px auto 0; gap:22px; }
+  .award-heading { gap:22px; }
+  .award-heading h2 { font-size:36px; }
+  .award-group-1 .award-heading h2 { font-size:44px; }
+  .award-group-3 .award-heading h2 { font-size:34px; }
+  .award-line { width:150px; }
+  .award-group-1 .award-heading { margin-bottom:16px; }
+  .award-group-2 .award-heading { margin-bottom:13px; }
+  .award-group-3 .award-heading { margin-bottom:12px; }
+  .award-group-1 .award-cards { grid-template-columns:780px; }
+  .award-group-2 .award-cards { grid-template-columns:repeat(2,540px); gap:40px; }
+  .award-group-3 .award-cards { grid-template-columns:repeat(3,390px); gap:30px; }
+  .award-group-1 .award-card { width:780px; height:158px; padding:24px 38px; }
+  .award-group-2 .award-card { width:540px; height:152px; padding:20px 27px; }
+  .award-group-3 .award-card { width:390px; height:138px; padding:17px 18px; }
+  .award-group-1 .award-identity { gap:20px; }
+  .award-group-2 .award-identity { gap:14px; }
+  .award-group-3 .award-identity { gap:9px; }
+  .identity-copy { gap:7px; }
+  .award-group-1 .rank-symbol svg { width:49px; height:49px; }
+  .award-group-2 .rank-symbol svg { width:36px; height:36px; }
+  .award-group-3 .rank-symbol svg { width:31px; height:31px; }
+  .award-group-1 .rank-number { font-size:22px; }
+  .award-group-2 .rank-number { font-size:18px; }
+  .award-group-3 .rank-number { font-size:16px; }
+  .award-group-1 .result-team { font-size:42px; }
+  .award-group-2 .result-team { font-size:30px; }
+  .award-group-3 .result-team { font-size:26px; }
+  .award-group-1 .result-score { font-size:70px; }
+  .award-group-2 .result-score { font-size:45px; }
+  .award-group-3 .result-score { font-size:38px; }
+  .award-group-1 .result-score small { font-size:18px; }
+  .award-group-3 .result-score small { font-size:13px; }
+  .results-footer { grid-row:3; margin-top:20px; line-height:1.1; }
+}
+
+@media (min-width:761px) and (max-height:900px) {
+  .results-page { padding-top:14px; padding-bottom:14px; }
+  .results-header h1 { font-size:48px; }
+  .results-page .award-groups { align-self:end; margin-top:0; gap:14px; }
+  .award-heading { gap:16px; }
+  .award-heading h2 { font-size:29px; }
+  .award-group-1 .award-heading h2 { font-size:36px; }
+  .award-group-3 .award-heading h2 { font-size:28px; }
+  .award-group-1 .award-heading { margin-bottom:12px; }
+  .award-group-2 .award-heading,.award-group-3 .award-heading { margin-bottom:10px; }
+  .award-group-1 .award-card { height:132px; padding:18px 30px; }
+  .award-group-2 .award-card { height:112px; padding:14px 22px; }
+  .award-group-3 .award-card { height:100px; padding:12px 15px; }
+  .results-footer { margin-top:12px; }
 }
 
 @media (max-width:760px) {
-  .results-page { background-position:center; }
+  .results-page { min-height:100vh; padding:42px 16px 32px; overflow:visible; background-position:center; }
   .results-page::before { background:rgba(255,251,245,.26); }
-  .award-groups { width:100%; }
-  .award-heading { gap:8px; }
+  .results-header h1 { margin:9px 0 5px; font-size:28px; line-height:1.25; }
+  .results-header p { font-size:14px; }
+  .results-rule { margin:16px auto 28px; }
+  .award-groups { gap:19px; width:100%; }
+  .award-heading { gap:8px; margin-bottom:9px; }
   .award-heading h2,.award-group-1 .award-heading h2,.award-group-3 .award-heading h2 { font-size:20px; }
   .award-heading h2::before,.award-heading h2::after { margin:0 5px; }
   .award-line { width:30px; }
-  .award-card,.award-group-1 .award-card,.award-group-3 .award-card { min-height:100px; padding:14px 16px; }
-  .award-card .result-team,.award-group-1 .award-card .result-team { font-size:19px; }
-  .award-group-1 .award-card .result-score { font-size:34px; }
-}
-
-/* Keep every award row inside the 16:9 safe area. */
-@media (min-width:761px) {
-  .award-groups { width:min(78vw,1450px); }
-  .award-group-1 .award-cards { grid-template-columns:minmax(0,760px); }
-  .award-group-2 .award-cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .award-group-3 .award-cards { grid-template-columns:repeat(3,minmax(0,1fr)); }
-  .award-group-1 .award-card { min-height:clamp(172px,19vh,218px); }
-  .award-group-2 .award-card { min-height:clamp(128px,14vh,158px); }
-  .award-group-3 .award-card { min-height:clamp(112px,12vh,140px); }
-}
-.award-cards { width:100%; max-width:100%; min-width:0; }
-.award-card { grid-template-columns:auto minmax(0,1fr) auto; min-width:0; max-width:100%; }
-.award-card .result-team,.award-card .result-score,.award-card .result-score small { white-space:nowrap; }
-.award-card .result-team { min-width:0; overflow:hidden; text-overflow:ellipsis; }
-.award-card .result-score { min-width:0; }
-.award-card .rank-label { grid-column:2; }
-
-/* Award cards: compact identity block, taller ceremonial proportions. */
-@media (min-width:761px) {
-  .award-group-1 .award-cards { grid-template-columns:minmax(0,680px); }
-  .award-group-2 .award-cards { width:min(74%,1100px); grid-template-columns:repeat(2,minmax(0,1fr)); margin-inline:auto; }
-  .award-group-3 .award-cards { width:min(86%,1280px); grid-template-columns:repeat(3,minmax(0,1fr)); margin-inline:auto; }
-  .award-group-1 .award-card { min-height:clamp(192px,21vh,238px); }
-  .award-group-2 .award-card { min-height:clamp(156px,17vh,192px); }
-  .award-group-3 .award-card { min-height:clamp(138px,15vh,170px); }
-}
-.award-card { grid-template-columns:minmax(0,45%) minmax(0,55%); grid-template-rows:minmax(0,1fr) auto; align-items:center; padding:22px 28px; }
-.award-identity { grid-column:1; grid-row:1 / span 2; min-width:0; display:flex; align-items:center; gap:14px; }
-.award-identity .rank-symbol { flex:0 0 auto; margin:0; display:grid; place-items:center; }
-.identity-copy { min-width:0; display:flex; flex-direction:column; justify-content:center; gap:5px; }
-.award-card .rank-number { margin:0; line-height:1; }
-.award-card .result-team { align-self:auto; overflow:visible; text-overflow:clip; }
-.award-card .result-score { grid-column:2; grid-row:1; justify-self:end; align-self:center; margin:0; }
-.award-card .rank-label { grid-column:2; grid-row:2; justify-self:end; align-self:end; margin:0; }
-.award-group-1 .award-card { padding:30px 36px; }
-.award-group-1 .award-identity { gap:18px; }
-.award-group-1 .identity-copy { gap:8px; }
-.award-group-3 .award-card { padding:20px 22px; }
-.award-group-3 .award-identity { gap:10px; }
-.award-group-3 .identity-copy { gap:4px; }
-@media (max-width:760px) {
-  .award-card,.award-group-1 .award-card,.award-group-3 .award-card { grid-template-columns:minmax(0,1fr) auto; padding:14px 16px; }
+  .award-cards,.award-group-1 .award-cards,.award-group-2 .award-cards,.award-group-3 .award-cards { grid-template-columns:1fr; width:100%; gap:10px; }
+  .award-card,.award-group-1 .award-card,.award-group-2 .award-card,.award-group-3 .award-card { width:100%; min-height:100px; height:auto; padding:14px 16px; }
   .award-identity { gap:9px; }
   .identity-copy { gap:3px; }
-  .award-group-1 .award-identity { gap:10px; }
-}
-
-/* Fine-tune only first- and third-prize card proportions. */
-@media (min-width:761px) {
-  .award-group-1 .award-cards { grid-template-columns:minmax(0,600px); }
-  .award-group-3 .award-cards { width:min(94%,1360px); gap:clamp(12px,1vw,20px); }
-}
-.award-group-3 .award-identity { gap:8px; }
-.award-group-3 .result-team { font-size:clamp(22px,1.65vw,28px); }
-.award-group-3 .result-score { font-size:clamp(31px,2.35vw,42px); }
-.award-group-3 .result-score small { font-size:13px; }
-
-/* Keep the complete award sequence and footer inside a 16:9 viewport. */
-@media (min-width:761px) {
-  .results-page { height:100vh; min-height:0; padding:clamp(12px,1.7vh,18px) clamp(40px,7vw,140px) clamp(8px,1.2vh,12px); overflow:hidden; }
-  .results-header .eyebrow { line-height:1.1; }
-  .results-header h1 { margin:clamp(4px,.7vh,7px) 0 2px; line-height:1.16; }
-  .results-header p { line-height:1.15; }
-  .results-rule { margin-top:clamp(6px,.8vh,9px); margin-bottom:clamp(8px,1.1vh,12px); }
-  .results-page .award-groups { gap:clamp(4px,.7vh,8px); justify-content:space-between; }
-  .award-heading { margin-bottom:clamp(3px,.55vh,6px); }
-  .award-group-1 .award-card { min-height:clamp(164px,17.5vh,172px); padding-top:25px; padding-bottom:21px; }
-  .award-group-2 .award-card { min-height:clamp(132px,13vh,140px); padding-top:18px; padding-bottom:16px; }
-  .award-group-3 .award-card { min-height:clamp(116px,11.5vh,124px); padding-top:16px; padding-bottom:14px; }
-  .results-footer { margin-top:clamp(8px,1.1vh,12px); line-height:1.1; }
+  .rank-symbol svg { width:26px; height:26px; }
+  .result-team { font-size:19px !important; }
+  .result-score,.award-group-1 .result-score { font-size:34px; }
+  .results-footer { margin-top:34px; }
 }
