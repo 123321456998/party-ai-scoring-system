@@ -13,19 +13,15 @@ Deno.serve(async (req) => {
     if (action === 'start-scoring') { const { count } = await db.from('anonymous_judges').select('id', { count: 'exact', head: true }).eq('event_id', event.id).eq('active', true); if (event.status !== 'prepare' || count !== event.expected_judges) throw new Error('赛事设置或匿名评分码未完成。'); await db.from('events').update({ status: 'scoring', updated_at: new Date().toISOString() }).eq('id', event.id); return new Response(JSON.stringify({ ok: true }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }) }
     if (action === 'lock-and-finalize') {
       if (event.status !== 'scoring') throw new Error('当前不在评分阶段。')
-      const [{ data: teams }, { data: judges }, { data: sessions }, { data: scores }] = await Promise.all([
+      const [{ data: teams }, { data: judges }, { data: scores }] = await Promise.all([
         db.from('teams').select('id,name').eq('event_id', event.id).eq('active', true),
         db.from('anonymous_judges').select('id,submitted_at').eq('event_id', event.id).eq('active', true),
-        db.from('judge_sessions').select('anonymous_judge_id').eq('event_id', event.id),
         db.from('scores').select('anonymous_judge_id,team_id,score').eq('event_id', event.id),
       ])
       const teamRows = teams ?? []
       const judgeRows = judges ?? []
-      const participantIds = new Set((sessions ?? []).map((session) => session.anonymous_judge_id))
-      const participants = judgeRows.filter((judge) => participantIds.has(judge.id))
-      if (participants.length === 0) throw new Error('暂无实际参与评委，不能锁定。')
-      const submitted = participants.filter((judge) => Boolean(judge.submitted_at))
-      if (submitted.length !== participants.length) throw new Error('所有实际参与评委确认提交后才能锁定。')
+      const submitted = judgeRows.filter((judge) => Boolean(judge.submitted_at))
+      if (submitted.length === 0) throw new Error('至少需要一位评委确认提交全部评分后才能锁定。')
       const scoreRows = scores ?? []
       for (const judge of submitted) {
         const judgeScores = scoreRows.filter((score) => score.anonymous_judge_id === judge.id)
