@@ -118,9 +118,9 @@
 @media (min-width:761px) {
   .results-page { display:grid; grid-template-rows:auto minmax(0,1fr) auto; height:100vh; min-height:0; padding:20px 40px 20px; overflow:hidden; }
   .results-header h1 { margin:8px 0 4px; font-size:58px; line-height:1.14; }
-  .results-header p { font-size:20px; line-height:1.15; transform:translateY(27px); }
-  .results-rule { margin:10px auto 0; transform:translateY(27px); }
-  .results-page .award-groups { grid-row:2; align-self:start; width:100%; margin:106px auto 0; gap:0; transform:none; }
+  .results-header p { font-size:20px; line-height:1.15; transform:translateY(39px); }
+  .results-rule { margin:10px auto 0; transform:translateY(39px); }
+  .results-page .award-groups { grid-row:2; align-self:start; width:100%; margin:82px auto 0; gap:0; transform:none; }
   .award-group-1 { margin-bottom:20px; }
   .award-group-2 { margin-bottom:18px; }
   .award-heading { gap:16px; }
