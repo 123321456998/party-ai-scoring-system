@@ -1,6 +1,6 @@
 export const TEAM_CODES = ['A', 'B', 'C', 'D', 'E', 'F'] as const
 export type TeamCode = (typeof TEAM_CODES)[number]
-export const TEAM_DISPLAY_ORDER = ['F', 'A', 'D', 'B', 'C', 'E'] as const
+export const TEAM_DISPLAY_ORDER = ['F', 'A', 'D', 'E', 'B', 'C'] as const
 
 export const TEAM_NAMES_BY_CODE: Record<TeamCode, string> = {
   A: '烟组',

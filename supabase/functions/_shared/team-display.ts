@@ -7,7 +7,7 @@ const TEAM_NAMES_BY_CODE: Record<string, string> = {
   F: '物流公司',
 }
 
-const DISPLAY_ORDER = new Map(['F', 'A', 'D', 'B', 'C', 'E'].map((code, index) => [code, index]))
+const DISPLAY_ORDER = new Map(['F', 'A', 'D', 'E', 'B', 'C'].map((code, index) => [code, index]))
 
 export type DisplayTeam = { team_code: string; name: string }
 
