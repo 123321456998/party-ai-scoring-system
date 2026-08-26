@@ -3,7 +3,7 @@ import { TEAM_DISPLAY_ORDER, TEAM_NAMES_BY_CODE } from './teams'
 export const eventConfig = {
   name: '“党建引领·数智赋能”AI创新竞赛',
   subtitle: '现场评分系统',
-  fullScore: 100,
+  fullScore: 10,
   teams: TEAM_DISPLAY_ORDER.map((code) => TEAM_NAMES_BY_CODE[code]),
 } as const
 

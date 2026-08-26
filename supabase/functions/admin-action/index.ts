@@ -29,7 +29,7 @@ Deno.serve(async (req) => {
       const scoreRows = scores ?? []
       for (const judge of submitted) {
         const judgeScores = scoreRows.filter((score) => score.anonymous_judge_id === judge.id)
-        if (judgeScores.length !== teamRows.length || judgeScores.some((score) => !teamRows.some((team) => team.id === score.team_id) || typeof score.score !== 'number' || !Number.isInteger(score.score) || score.score < 0 || score.score > 100)) throw new Error('已提交评委的评分尚未完整。')
+        if (judgeScores.length !== teamRows.length || judgeScores.some((score) => !teamRows.some((team) => team.id === score.team_id) || typeof score.score !== 'number' || !Number.isInteger(score.score) || score.score < 0 || score.score > 10)) throw new Error('已提交评委的评分尚未完整。')
       }
       const submittedIds = new Set(submitted.map((judge) => judge.id))
       const results = teamRows.map((team) => { const values = scoreRows.filter((score) => submittedIds.has(score.anonymous_judge_id) && score.team_id === team.id).map((score) => Number(score.score)); if (values.length !== submitted.length) throw new Error('已提交评委的评分尚未完整。'); return { event_id: event.id, team_id: team.id, average_score: Number((values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(2)), score_count: values.length, rank_position: 0, award: '三等奖', tie: false } }).sort((a, b) => b.average_score - a.average_score)

@@ -22,7 +22,7 @@ Deno.serve(async (req) => {
     ])
     const teamRows = teams ?? []
     const scoreRows = scores ?? []
-    if (teamRows.length === 0 || scoreRows.length !== teamRows.length || scoreRows.some((score) => !teamRows.some((team) => team.id === score.team_id) || typeof score.score !== 'number' || !Number.isInteger(score.score) || score.score < 0 || score.score > 100)) throw new Error('请完成全部队伍评分后提交。')
+    if (teamRows.length === 0 || scoreRows.length !== teamRows.length || scoreRows.some((score) => !teamRows.some((team) => team.id === score.team_id) || typeof score.score !== 'number' || !Number.isInteger(score.score) || score.score < 0 || score.score > 10)) throw new Error('请完成全部队伍评分后提交。')
 
     const submittedAt = new Date().toISOString()
     const { data: updated, error } = await db.from('anonymous_judges').update({ submitted_at: submittedAt }).eq('id', judge.id).is('submitted_at', null).select('submitted_at').maybeSingle()
