@@ -192,3 +192,25 @@
 .brand-copy-no-subtitle { display:flex; align-items:center; min-height:32px; }
 .score-intro > h1 + .progress-line { margin-top:20px; }
 .identity-card .identity-prompt { margin-top:16px; }
+
+/* Mobile score cards: keep team identity and save status on one clear row. */
+.score-card { grid-template-columns:minmax(0, 1fr) auto; min-height:86px; padding:15px 16px; column-gap:14px; }
+.team-info { display:flex; flex-direction:row; align-items:center; gap:18px; min-width:0; }
+.team-heading { display:flex; align-items:center; gap:10px; min-width:0; flex:0 1 auto; }
+.team-index { grid-column:auto; grid-row:auto; flex:0 0 auto; font-size:14px; }
+.team-name { grid-column:auto; grid-row:auto; min-width:0; overflow:visible; overflow-wrap:normal; white-space:nowrap; font-size:21px; font-weight:750; line-height:1.2; }
+.score-status { display:flex; align-items:center; gap:5px; flex:0 0 auto; min-width:0; font-size:13px; white-space:nowrap; }
+.score-status > svg,.score-status > span { grid-column:auto; grid-row:auto; justify-self:auto; }
+.score-input-wrap { gap:9px; font-size:15px; white-space:nowrap; }
+.score-input-wrap input { width:76px; height:52px; font-size:28px; }
+
+@media (max-width:760px) {
+  .score-card { min-height:84px; padding:14px 12px; column-gap:10px; }
+  .team-info { gap:16px; }
+  .team-heading { gap:8px; }
+  .team-index { font-size:13px; }
+  .team-name { font-size:20px; }
+  .score-status { font-size:12px; }
+  .score-input-wrap { gap:7px; font-size:14px; }
+  .score-input-wrap input { width:70px; height:50px; font-size:27px; }
+}
